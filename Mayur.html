@@ -6,39 +6,38 @@
     <title>My Website</title>
     <link rel="stylesheet" href="styles.css">
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", () => {
             const tabs = document.querySelectorAll(".tab-button");
             const navLinks = document.querySelectorAll(".nav-link");
             const contentArea = document.querySelector(".main-content");
 
+            // Event listener for tab buttons
             tabs.forEach(tab => {
-                tab.addEventListener("click", function() {
-                    const tabId = this.getAttribute("data-tab");
+                tab.addEventListener("click", () => {
+                    const tabId = tab.getAttribute("data-tab");
                     loadTabContent(tabId);
                 });
             });
 
+            // Event listener for navigation links
             navLinks.forEach(link => {
-                link.addEventListener("click", function() {
-                    const pageId = this.getAttribute("data-page");
+                link.addEventListener("click", () => {
+                    const pageId = link.getAttribute("data-page");
                     loadPageContent(pageId);
                 });
             });
 
+            // Function to load tab content dynamically
             function loadTabContent(tabId) {
                 fetch(`${tabId}.html`)
                     .then(response => response.text())
                     .then(data => {
-                        const tabContent = document.querySelector(`#${tabId}`);
-                        tabContent.innerHTML = data;
-                        document.querySelectorAll(".tab-content").forEach(content => {
-                            content.classList.remove("active");
-                        });
-                        tabContent.classList.add("active");
+                        contentArea.innerHTML = data;
                     })
                     .catch(error => console.error("Error loading tab content:", error));
             }
 
+            // Function to load page content dynamically
             function loadPageContent(pageId) {
                 fetch(`${pageId}.html`)
                     .then(response => response.text())
@@ -48,8 +47,8 @@
                     .catch(error => console.error("Error loading page content:", error));
             }
 
-            // Load initial tab content
-            loadTabContent('summary'); // or any default tab you want to show initially
+            // Load initial tab content (default to 'home')
+            loadPageContent('home');
         });
     </script>
 </head>
@@ -68,42 +67,17 @@
 
     <!-- Main container for sidebar and content -->
     <div class="container">
-        <!-- Left side tab navigation for Home section -->
-        <nav class="side-navbar" id="side-navbar">
-            <h3></h3>
+        <!-- Left side tab navigation -->
+        <nav class="side-navbar">
             <button class="tab-button active" data-tab="summary">Summary</button>
             <button class="tab-button" data-tab="dotnet">.NET</button>
-            <button class="tab-button" data-tab="frontend">Frontend</button>
             <button class="tab-button" data-tab="mssql">MSSQL</button>
+            <button class="tab-button" data-tab="frontend">Frontend</button>
         </nav>
 
-        <!-- Center content area -->
+        <!-- Center content area where the content will be dynamically loaded -->
         <div class="main-content">
-            <!-- Home section with tab content -->
-            <div id="home" class="page-content active">
-                <div id="summary" class="tab-content active">
-                    <!-- Content will be loaded here -->
-                </div>
-                <div id="dotnet" class="tab-content">
-                    <!-- Content will be loaded here -->
-                </div>
-                <div id="frontend" class="tab-content">
-                    <!-- Content will be loaded here -->
-                </div>
-                <div id="mssql" class="tab-content">
-                    <!-- Content will be loaded here -->
-                </div>
-            </div>
-
-            <!-- About Us section -->
-            <div id="about" class="page-content">
-                <!-- Content will be loaded here -->
-            </div>
-
-            <!-- Contact Us section -->
-            <div id="contact" class="page-content">
-                <!-- Content will be loaded here -->
-            </div>
+            <!-- Content will be loaded here dynamically -->
         </div>
     </div>
 
