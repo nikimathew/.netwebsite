@@ -102,3 +102,97 @@ body {
 .tab-content h2 {
     margin-top: 0;
 }
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+   
+}
+
+.footer-left, .footer-center, .footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left {
+    flex: 1;
+    justify-content: flex-start;
+}
+
+.footer-center {
+    flex: 1;
+    justify-content: center;
+}
+
+.footer-right {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+}
+
+ /* Additional styles for the submenu */
+/* Submenu container styling */
+.frontend-submenu {
+    display: none;
+    margin-top: 10px;
+    width: 160px; /* Fixed width for submenu container */
+}
+
+/* Show the submenu when active */
+.frontend-submenu.active {
+    display: block;
+}
+
+/* Button styling */
+.frontend-submenu button {
+    display: block;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #ffffff; 
+    border: 1px solid #ccc;
+    cursor: pointer;
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+
+.frontend-submenu button:hover {
+    background-color: #f0f0f0; /* Slightly darker shade of white on hover */
+}
+
+/* Submenu container styling */
+.submenu {
+    display: none;
+    margin-top: 10px;
+    width: 160px; /* Fixed width for submenu container */
+}
+
+/* Show the submenu when active */
+.submenu.active {
+    display: block;
+}
+
+/* Button styling */
+.submenu button {
+    display: block;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #ffffff; /* White background for buttons */
+    border: 1px solid #ccc; /* Light border for better visibility */
+    cursor: pointer;
+    width: 100%; /* Ensure buttons take full width of the container */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Button hover effect */
+.submenu button:hover {
+    background-color: #f0f0f0; /* Slightly darker shade of white on hover */
+}

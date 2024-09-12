@@ -8,6 +8,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const tabs = document.querySelectorAll(".tab-button");
+            const subMenuButtons = document.querySelectorAll(".submenu button");
             const navLinks = document.querySelectorAll(".nav-link");
             const contentArea = document.querySelector(".main-content");
 
@@ -15,11 +16,28 @@
             tabs.forEach(tab => {
                 tab.addEventListener("click", () => {
                     const tabId = tab.getAttribute("data-tab");
-                    loadTabContent(tabId);
+
+                    // Toggle submenus for .NET and Frontend
+                    if (tabId === 'frontend') {
+                        toggleSubmenu('frontend-submenu');
+                    } else if (tabId === 'dotnet') {
+                        toggleSubmenu('dotnet-submenu');
+                    } else {
+                        loadTabContent(tabId);
+                        document.querySelectorAll('.submenu').forEach(submenu => submenu.classList.remove('active'));
+                    }
                 });
             });
 
-            // Event listener for navigation links
+            // Event listener for submenu buttons
+            subMenuButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const pageId = button.getAttribute("data-page");
+                    loadTabContent(pageId);
+                });
+            });
+
+            // Event listener for navigation links (Home, About Us, Contact Us)
             navLinks.forEach(link => {
                 link.addEventListener("click", () => {
                     const pageId = link.getAttribute("data-page");
@@ -28,8 +46,8 @@
             });
 
             // Function to load tab content dynamically
-            function loadTabContent(tabId) {
-                fetch(`${tabId}.html`)
+            function loadTabContent(pageId) {
+                fetch(`${pageId}.html`)
                     .then(response => response.text())
                     .then(data => {
                         contentArea.innerHTML = data;
@@ -47,7 +65,13 @@
                     .catch(error => console.error("Error loading page content:", error));
             }
 
-            // Load initial tab content (default to 'home')
+            // Function to toggle submenu visibility
+            function toggleSubmenu(submenuClass) {
+                const submenu = document.querySelector(`.${submenuClass}`);
+                submenu.classList.toggle('active');
+            }
+
+            // Load initial page content (default to 'home')
             loadPageContent('home');
         });
     </script>
@@ -71,8 +95,22 @@
         <nav class="side-navbar">
             <button class="tab-button active" data-tab="summary">Summary</button>
             <button class="tab-button" data-tab="dotnet">.NET</button>
+            <div class="dotnet-submenu submenu">
+                <button data-page="csharp">C#</button>
+                <button data-page="mvc">MVC</button>
+                <button data-page="dotnetcore">.NET Core</button>
+                <!-- Add more .NET related options here if needed -->
+            </div>
             <button class="tab-button" data-tab="mssql">MSSQL</button>
             <button class="tab-button" data-tab="frontend">Frontend</button>
+            <div class="frontend-submenu submenu">
+                <button data-page="html">HTML</button>
+                <button data-page="css">CSS</button>
+                <button data-page="bootstrap">Bootstrap</button>
+                <button data-page="javascript">JavaScript</button>
+                <button data-page="jquery">jQuery</button>
+                <button data-page="react">React</button>
+            </div>
         </nav>
 
         <!-- Center content area where the content will be dynamically loaded -->
@@ -80,6 +118,20 @@
             <!-- Content will be loaded here dynamically -->
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-left">Mayur</div>
+        <div class="footer-center">Copyright© Scorvigo Pvt Ltd</div>
+        <div class="footer-right">
+            <a href="https://www.instagram.com" target="_blank">
+                <img src="—Pngtree—instagram color icon_3995406.png" alt="Instagram" class="social-icon">
+            </a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img src="—Pngtree—youtube social media icon_3572473.png" alt="YouTube" class="social-icon">
+            </a>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
