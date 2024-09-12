@@ -5,6 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabs = document.querySelectorAll(".tab-button");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const contentArea = document.querySelector(".main-content");
+
+            tabs.forEach(tab => {
+                tab.addEventListener("click", function() {
+                    const tabId = this.getAttribute("data-tab");
+                    loadTabContent(tabId);
+                });
+            });
+
+            navLinks.forEach(link => {
+                link.addEventListener("click", function() {
+                    const pageId = this.getAttribute("data-page");
+                    loadPageContent(pageId);
+                });
+            });
+
+            function loadTabContent(tabId) {
+                fetch(`${tabId}.html`)
+                    .then(response => response.text())
+                    .then(data => {
+                        const tabContent = document.querySelector(`#${tabId}`);
+                        tabContent.innerHTML = data;
+                        document.querySelectorAll(".tab-content").forEach(content => {
+                            content.classList.remove("active");
+                        });
+                        tabContent.classList.add("active");
+                    })
+                    .catch(error => console.error("Error loading tab content:", error));
+            }
+
+            function loadPageContent(pageId) {
+                fetch(`${pageId}.html`)
+                    .then(response => response.text())
+                    .then(data => {
+                        contentArea.innerHTML = data;
+                    })
+                    .catch(error => console.error("Error loading page content:", error));
+            }
+
+            // Load initial tab content
+            loadTabContent('summary'); // or any default tab you want to show initially
+        });
+    </script>
 </head>
 <body>
     <!-- Top Navbar -->
@@ -35,33 +82,27 @@
             <!-- Home section with tab content -->
             <div id="home" class="page-content active">
                 <div id="summary" class="tab-content active">
-                    <h2>Summary</h2>
-                    <p>This is a summary of the website.</p>
+                    <!-- Content will be loaded here -->
                 </div>
                 <div id="dotnet" class="tab-content">
-                    <h2>.NET</h2>
-                    <p>Information about .NET development.</p>
+                    <!-- Content will be loaded here -->
                 </div>
                 <div id="frontend" class="tab-content">
-                    <h2>Frontend</h2>
-                    <p>Details on frontend technologies and development.</p>
+                    <!-- Content will be loaded here -->
                 </div>
                 <div id="mssql" class="tab-content">
-                    <h2>MSSQL</h2>
-                    <p>Details about MSSQL database management.</p>
+                    <!-- Content will be loaded here -->
                 </div>
             </div>
 
             <!-- About Us section -->
             <div id="about" class="page-content">
-                <h2>About Us</h2>
-                <p>This is the About Us section of the website.</p>
+                <!-- Content will be loaded here -->
             </div>
 
             <!-- Contact Us section -->
             <div id="contact" class="page-content">
-                <h2>Contact Us</h2>
-                <p>This is the Contact Us section of the website.</p>
+                <!-- Content will be loaded here -->
             </div>
         </div>
     </div>
