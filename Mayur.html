@@ -5,79 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link rel="stylesheet" href="styles.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const tabs = document.querySelectorAll(".tab-button");
-            const subMenuButtons = document.querySelectorAll(".submenu button");
-            const navLinks = document.querySelectorAll(".nav-link");
-            const contentArea = document.querySelector(".main-content");
-
-            // Event listener for tab buttons
-            tabs.forEach(tab => {
-                tab.addEventListener("click", () => {
-                    const tabId = tab.getAttribute("data-tab");
-
-                    // Toggle submenus for .NET and Frontend
-                    if (tabId === 'frontend') {
-                        toggleSubmenu('frontend-submenu');
-                    } else if (tabId === 'dotnet') {
-                        toggleSubmenu('dotnet-submenu');
-                    } else {
-                        loadTabContent(tabId);
-                        document.querySelectorAll('.submenu').forEach(submenu => submenu.classList.remove('active'));
-                    }
-                });
-            });
-
-            // Event listener for submenu buttons
-            subMenuButtons.forEach(button => {
-                button.addEventListener("click", () => {
-                    const pageId = button.getAttribute("data-page");
-                    loadTabContent(pageId);
-                });
-            });
-
-            // Event listener for navigation links (Home, About Us, Contact Us)
-            navLinks.forEach(link => {
-                link.addEventListener("click", () => {
-                    const pageId = link.getAttribute("data-page");
-                    loadPageContent(pageId);
-                });
-            });
-
-            // Function to load tab content dynamically
-            function loadTabContent(pageId) {
-                fetch(`${pageId}.html`)
-                    .then(response => response.text())
-                    .then(data => {
-                        contentArea.innerHTML = data;
-                    })
-                    .catch(error => console.error("Error loading tab content:", error));
-            }
-
-            // Function to load page content dynamically
-            function loadPageContent(pageId) {
-                fetch(`${pageId}.html`)
-                    .then(response => response.text())
-                    .then(data => {
-                        contentArea.innerHTML = data;
-                    })
-                    .catch(error => console.error("Error loading page content:", error));
-            }
-
-            // Function to toggle submenu visibility
-            function toggleSubmenu(submenuClass) {
-                const submenu = document.querySelector(`.${submenuClass}`);
-                submenu.classList.toggle('active');
-            }
-
-            // Load initial page content (default to 'home')
-            loadPageContent('home');
-        });
-    </script>
 </head>
 <body>
-    <!-- Top Navbar -->
     <nav class="top-navbar">
         <div class="navbar-container">
             <div class="left">Mayur</div>
@@ -89,21 +18,18 @@
         </div>
     </nav>
 
-    <!-- Main container for sidebar and content -->
     <div class="container">
-        <!-- Left side tab navigation -->
         <nav class="side-navbar">
             <button class="tab-button active" data-tab="summary">Summary</button>
-            <button class="tab-button" data-tab="dotnet">.NET</button>
-            <div class="dotnet-submenu submenu">
+            <button class="tab-button" data-tab="dotnet" data-page="dotnet">.NET</button>
+            <div class="submenu dotnet-submenu">
                 <button data-page="csharp">C#</button>
                 <button data-page="mvc">MVC</button>
                 <button data-page="dotnetcore">.NET Core</button>
-                <!-- Add more .NET related options here if needed -->
             </div>
             <button class="tab-button" data-tab="mssql">MSSQL</button>
-            <button class="tab-button" data-tab="frontend">Frontend</button>
-            <div class="frontend-submenu submenu">
+            <button class="tab-button" data-tab="frontend" data-page="frontend">Frontend</button>
+            <div class="submenu frontend-submenu">
                 <button data-page="html">HTML</button>
                 <button data-page="css">CSS</button>
                 <button data-page="bootstrap">Bootstrap</button>
@@ -113,16 +39,14 @@
             </div>
         </nav>
 
-        <!-- Center content area where the content will be dynamically loaded -->
         <div class="main-content">
-            <!-- Content will be loaded here dynamically -->
+            <!-- Dynamic content will load here -->
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="footer-left">Mayur</div>
-        <div class="footer-center">Copyright© Scorvigo Pvt Ltd</div>
+        <div class="footer-center">Copyright © Scorvigo Pvt Ltd</div>
         <div class="footer-right">
             <a href="https://www.instagram.com" target="_blank">
                 <img src="—Pngtree—instagram color icon_3995406.png" alt="Instagram" class="social-icon">
@@ -133,6 +57,70 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tabs = document.querySelectorAll(".tab-button");
+            const subMenuButtons = document.querySelectorAll(".submenu button");
+            const navLinks = document.querySelectorAll(".nav-link");
+            const contentArea = document.querySelector(".main-content");
+
+            // Handle tab button clicks
+            tabs.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    const tabId = tab.getAttribute("data-tab");
+                    const pageId = tab.getAttribute("data-page");
+
+                    // Show or hide submenus based on tab selection
+                    if (tabId === 'frontend') {
+                        toggleSubmenu('frontend-submenu');
+                        loadContent(pageId);
+                    } else if (tabId === 'dotnet') {
+                        toggleSubmenu('dotnet-submenu');
+                        loadContent(pageId); // Load the .NET page
+                    } else {
+                        loadContent(tabId);
+                        closeSubmenus();
+                    }
+                });
+            });
+
+            // Handle submenu button clicks
+            subMenuButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const pageId = button.getAttribute("data-page");
+                    loadContent(pageId);
+                });
+            });
+
+            // Handle navigation links
+            navLinks.forEach(link => {
+                link.addEventListener("click", () => {
+                    const pageId = link.getAttribute("data-page");
+                    loadContent(pageId);
+                });
+            });
+
+            // Load content dynamically
+            function loadContent(pageId) {
+                fetch(`${pageId}.html`)
+                    .then(response => response.text())
+                    .then(data => contentArea.innerHTML = data)
+                    .catch(error => console.error("Error loading content:", error));
+            }
+
+            // Toggle visibility of a submenu
+            function toggleSubmenu(submenuClass) {
+                document.querySelector(`.${submenuClass}`).classList.toggle('active');
+            }
+
+            // Close all submenus
+            function closeSubmenus() {
+                document.querySelectorAll('.submenu').forEach(submenu => submenu.classList.remove('active'));
+            }
+
+            // Load default page content on initial load
+            loadContent('home');
+        });
+    </script>
 </body>
 </html>
