@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navbar -->
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <div class="left">Mayur</div>
+            <div class="right">
+                <a href="#home" class="nav-link" data-page="home">Home</a>
+                <a href="#about" class="nav-link" data-page="about">About Us</a>
+                <a href="#contact" class="nav-link" data-page="contact">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main container for sidebar and content -->
+    <div class="container">
+        <!-- Left side tab navigation for Home section -->
+        <nav class="side-navbar" id="side-navbar">
+            <h3></h3>
+            <button class="tab-button active" data-tab="summary">Summary</button>
+            <button class="tab-button" data-tab="dotnet">.NET</button>
+            <button class="tab-button" data-tab="frontend">Frontend</button>
+            <button class="tab-button" data-tab="mssql">MSSQL</button>
+        </nav>
+
+        <!-- Center content area -->
+        <div class="main-content">
+            <!-- Home section with tab content -->
+            <div id="home" class="page-content active">
+                <div id="summary" class="tab-content active">
+                    <h2>Summary</h2>
+                    <p>This is a summary of the website.</p>
+                </div>
+                <div id="dotnet" class="tab-content">
+                    <h2>.NET</h2>
+                    <p>Information about .NET development.</p>
+                </div>
+                <div id="frontend" class="tab-content">
+                    <h2>Frontend</h2>
+                    <p>Details on frontend technologies and development.</p>
+                </div>
+                <div id="mssql" class="tab-content">
+                    <h2>MSSQL</h2>
+                    <p>Details about MSSQL database management.</p>
+                </div>
+            </div>
+
+            <!-- About Us section -->
+            <div id="about" class="page-content">
+                <h2>About Us</h2>
+                <p>This is the About Us section of the website.</p>
+            </div>
+
+            <!-- Contact Us section -->
+            <div id="contact" class="page-content">
+                <h2>Contact Us</h2>
+                <p>This is the Contact Us section of the website.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
