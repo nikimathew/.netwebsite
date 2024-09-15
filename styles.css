@@ -229,3 +229,18 @@ body {
 .submenu button:hover {
     background-color: #f0f0f0;
 }
+
+nav.top-navbar {
+    background-color: #6667AB;
+    border: 0.5px solid #a9a1a1;
+}
+footer.footer {
+    background-color: #6667AB;
+    border: 0.5px solid #a9a1a1;
+}
+nav.side-navbar {
+    background-color: #6f70ba9c;
+}
+button.tab-button {
+    background-color: #6667AB;
+}

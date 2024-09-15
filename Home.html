@@ -4,9 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <style>
+        /* Home page specific styling */
+        .home-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+            height: 100%;
+        }
+
+        .home-box {
+            width: 80%;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .home-box h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        .home-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .backend-frontend-boxes {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 1200px;
+            gap: 20px;
+        }
+
+        .box {
+            flex: 1;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .box h3 {
+            margin-bottom: 15px;
+            color: #1e88e5;
+        }
+
+        .box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .box ul li {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .box ul li::before {
+            content: "•";
+            margin-right: 5px;
+            color: #1e88e5;
+        }
+    </style>
 </head>
 <body>
-    <h2>Home</h2>
-    <p>This is the home page section of the website.</p>
+    <div class="home-container">
+        <div class="home-box">
+            <h2>Welcome to Our Website</h2>
+            <p>This is the home page section of the website. Here you will find information about our services, technologies, and expertise. Explore the sections below to learn more about our backend and frontend capabilities.</p>
+        </div>
+
+        <div class="backend-frontend-boxes">
+            <!-- Backend Box -->
+            <div class="box">
+                <h3>Backend Features</h3>
+                <ul>
+                    <li>.NET Development</li>
+                    <li>MSSQL Database Management</li>
+                    <li>API Integration</li>
+                    <li>Server Management</li>
+                </ul>
+            </div>
+
+            <!-- Frontend Box -->
+            <div class="box">
+                <h3>Frontend Features</h3>
+                <ul>
+                    <li>HTML5/CSS3</li>
+                    <li>JavaScript/jQuery</li>
+                    <li>React Framework</li>
+                    <li>Responsive Design</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
