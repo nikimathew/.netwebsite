@@ -5,6 +5,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Prevents body scrolling */
 }
 
 /* Top navbar */
@@ -14,6 +15,11 @@ body {
     color: white;
     padding: 10px 0;
     box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure it stays on top */
+    height: 50px;
 }
 
 .navbar-container {
@@ -37,7 +43,7 @@ body {
 .container {
     display: flex;
     flex-grow: 1;
-    height: calc(100vh - 50px); /* Adjust for the height of the navbar */
+    margin-top: 50px; /* Space for the fixed navbar */
 }
 
 /* Side navbar for tabs */
@@ -46,6 +52,12 @@ body {
     background-color: #333;
     padding: 20px;
     box-sizing: border-box;
+    position: fixed; /* Fixes the side navbar */
+    top: 50px; /* Position below the top navbar */
+    bottom: 0; /* Stretches to the bottom of the page */
+    left: 0;
+    z-index: 1000; /* Ensure it stays on top */
+    overflow-y: auto; /* Adds scroll if content overflows */
 }
 
 .side-navbar h3 {
@@ -80,6 +92,9 @@ body {
     padding: 20px;
     background-color: #f4f4f4;
     box-sizing: border-box;
+    margin-left: 200px; /* Space for the fixed side navbar */
+    overflow-y: auto; /* Allows scrolling for content */
+    height: calc(100vh - 50px); /* Ensures content fits within viewport height */
 }
 
 /* Page content sections */
@@ -102,6 +117,8 @@ body {
 .tab-content h2 {
     margin-top: 0;
 }
+
+/* Footer */
 .footer {
     display: flex;
     justify-content: space-between;
@@ -109,7 +126,12 @@ body {
     padding: 10px 20px;
     background-color: #333;
     color: white;
-   
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000; /* Ensure it stays on top */
 }
 
 .footer-left, .footer-center, .footer-right {
@@ -136,14 +158,26 @@ body {
     width: 24px;
     height: 24px;
     margin-left: 10px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
- /* Additional styles for the submenu */
+.social-icon:hover {
+    transform: scale(1.1);
+    background-color: #007bff;
+}
+
+/* Additional styles for the submenu */
 /* Submenu container styling */
 .frontend-submenu {
     display: none;
     margin-top: 10px;
-    width: 160px; /* Fixed width for submenu container */
+    width: 160px;
 }
 
 /* Show the submenu when active */
@@ -156,23 +190,22 @@ body {
     display: block;
     margin: 5px 0;
     padding: 10px;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     border: 1px solid #ccc;
     cursor: pointer;
-    width: 100%; 
-    box-sizing: border-box; 
+    width: 100%;
+    box-sizing: border-box;
 }
 
-
 .frontend-submenu button:hover {
-    background-color: #f0f0f0; /* Slightly darker shade of white on hover */
+    background-color: #f0f0f0;
 }
 
 /* Submenu container styling */
 .submenu {
     display: none;
     margin-top: 10px;
-    width: 160px; /* Fixed width for submenu container */
+    width: 160px;
 }
 
 /* Show the submenu when active */
@@ -185,14 +218,14 @@ body {
     display: block;
     margin: 5px 0;
     padding: 10px;
-    background-color: #ffffff; /* White background for buttons */
-    border: 1px solid #ccc; /* Light border for better visibility */
+    background-color: #ffffff;
+    border: 1px solid #ccc;
     cursor: pointer;
-    width: 100%; /* Ensure buttons take full width of the container */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* Button hover effect */
 .submenu button:hover {
-    background-color: #f0f0f0; /* Slightly darker shade of white on hover */
+    background-color: #f0f0f0;
 }

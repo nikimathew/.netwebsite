@@ -3,10 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MVC</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>MVC Interview Questions</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Header section styling */
+        .header {
+            background-color: #e3f2f5;
+            padding: 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: -18px;
+            
+        }
+
+        /* Title and update date */
+        .title-section {
+            margin-top: 10px;
+        }
+
+        .title-section h1 {
+            font-size: 28px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .last-updated {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Download button styling */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #a7b3c0;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .download-btn:hover {
+            background-color: #a7b0ba;
+        }
+
+        .download-btn img {
+            margin-right: 10px;
+            width: 30px;
+            height: 24px;
+        }
+
+        /* Content section styling */
+        .content-section {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #444;
+        }
+    </style>
 </head>
 <body>
-    <h2>MVC</h2>
-    <p>This is the About Us section of the website.</p>
+
+    <!-- Header section -->
+    <div class="header">
+        <div class="title-section">
+            <div class="breadcrumbs">
+                <span>MVC Interview Questions</span>
+            </div>
+
+            <h1>MVC Interview Questions</h1>
+
+            <div class="last-updated">
+                Last Updated: Sep 19, 2024
+            </div>
+        </div>
+
+        <!-- Download button -->
+        <a href="path/to/your/file.pdf" class="download-btn" download>
+            <img src="https://assets.interviewbit.com/assets/ibpp/interview_guides/download_v2-f7bcad529b2845c93dddc78cd31acf9ecb098c42854a1757f0f8949950377c02.svg.gz" alt="Download PDF">
+            Download PDF
+        </a>
+    </div>
+    <div class="content-section">
+        <h2>MVC Interview Questions and Answers</h2>
+        <ul></ul>
+            <li>
+                <h3>1. What does MVC stand for?</h3>
+                <p>MVC stands for Model-View-Controller. It is a design pattern used to separate an application into three interconnected components: Model (manages data), View (displays data), and Controller (handles user input and updates the Model).</p>
+            </li>
+            <li>
+                <h3>2. What is the purpose of the Model in MVC?</h3>
+                <p>The Model represents the data and business logic of the application. It directly manages the data, logic, and rules of the application.</p>
+            </li>
+            <li>
+                <h3>3. What is the role of the View in MVC?</h3>
+                <p>The View is responsible for rendering the data from the Model into a user interface. It displays the data to the user and provides a way for users to interact with the application.</p>
+            </li>
+            <li>
+                <h3>4. What does the Controller do in MVC?</h3>
+                <p>The Controller processes user input, interacts with the Model to fetch or update data, and determines which View should be displayed based on the data.</p>
+            </li>
+            <li>
+                <h3>5. How does the MVC pattern improve application design?</h3>
+                <p>MVC improves application design by separating concerns, which makes it easier to manage and scale the application. It allows developers to work on the Model, View, and Controller independently.</p>
+            </li>
+            <li>
+                <h3>6. Can you give an example of how data flow works in MVC?</h3>
+                <p>When a user interacts with the View (e.g., by clicking a button), the Controller receives this input, processes it, updates the Model if needed, and then updates the View to reflect changes.</p>
+            </li>
+            <li>
+                <h3>7. What are some advantages of using MVC?</h3>
+                <p>Advantages include separation of concerns, easier maintenance, scalability, and the ability to work on different components of the application independently.</p>
+            </li>
+            <li>
+                <h3>8. What are some disadvantages of using MVC?</h3>
+                <p>Disadvantages may include increased complexity and the need for more initial setup and design considerations.</p>
+            </li>
+            <li>
+                <h3>9. How does MVC handle user input?</h3>
+                <p>The Controller handles user input, processes it, updates the Model as necessary, and determines the View to render based on the updated Model.</p>
+            </li>
+            <li>
+                <h3>10. What is the difference between a View and a Partial View?</h3>
+                <p>A View is a full-page representation of data, while a Partial View is a reusable component or section of a View. Partial Views are used to modularize and reuse UI elements.</p>
+            </li>
+            <li>
+                <h3>11. How does MVC support testability?</h3>
+                <p>MVC supports testability by allowing each component (Model, View, Controller) to be tested independently. For example, business logic in the Model can be tested without involving the View or Controller.</p>
+            </li>
+            <li>
+                <h3>12. What is Routing in MVC?</h3>
+                <p>Routing is the mechanism that maps incoming requests to the appropriate Controller and Action method. It determines which Controller and Action should handle a particular request.</p>
+            </li>
+            <li>
+                <h3>13. What is an Action Method?</h3>
+                <p>An Action Method is a method in a Controller that handles user requests and returns a result, typically a View or data.</p>
+            </li>
+            <li>
+                <h3>14. How does data validation work in MVC?</h3>
+                <p>Data validation in MVC can be performed using data annotations or custom validation attributes. Validation is typically handled in the Model or Controller and ensures that data meets specified criteria before processing.</p>
+            </li>
+            <li>
+                <h3>15. What is a Model Binder?</h3>
+                <p>A Model Binder is a component that automatically maps data from an HTTP request (such as form inputs) to action method parameters or model properties.</p>
+            </li>
+            <li>
+                <h3>16. What are Data Annotations?</h3>
+                <p>Data Annotations are attributes used in the Model to define validation rules, display formats, and other metadata. Examples include [Required], [StringLength], and [Range].</p>
+            </li>
+            <li>
+                <h3>17. How do you handle errors in MVC?</h3>
+                <p>Errors in MVC can be handled using custom error pages, exception filters, or by configuring error handling in the web.config or startup configuration.</p>
+            </li>
+            <li>
+                <h3>18. What is Dependency Injection in MVC?</h3>
+                <p>Dependency Injection (DI) is a design pattern used to achieve Inversion of Control (IoC) by injecting dependencies (services, repositories) into the Controller rather than hard-coding them. This makes the application more modular and testable.</p>
+            </li>
+        </ul>
+    </div>
+
 </body>
 </html>

@@ -3,10 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>.NET Core</title>
+    <link rel="stylesheet" href="styles.css">
+    <title>C# Interview Questions</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+
+        /* Header section styling */
+        .header {
+            background-color: #e3f2f5;
+            padding: 45px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: -18px;
+            
+        }
+
+        /* Title and update date */
+        .title-section {
+            margin-top: 10px;
+        }
+
+        .title-section h1 {
+            font-size: 28px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+        .last-updated {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Download button styling */
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background-color: #a7b3c0;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .download-btn:hover {
+            background-color: #a7b0ba;
+        }
+
+        .download-btn img {
+            margin-right: 10px;
+            width: 30px;
+            height: 24px;
+        }
+
+        /* Content section styling */
+        .content-section {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #444;
+        }
+    </style>
 </head>
 <body>
-    <h2>.NET Core</h2>
-    <p>This is the About Us section of the website.</p>
+
+    <!-- Header section -->
+    <div class="header">
+        <div class="title-section">
+            <div class="breadcrumbs">
+                <span>.NET Core Interview Questions</span>
+            </div>
+
+            <h1>.NET Core Interview Questions</h1>
+
+            <div class="last-updated">
+                Last Updated: Sep 19, 2024
+            </div>
+        </div>
+
+        <!-- Download button -->
+        <a href="path/to/your/file.pdf" class="download-btn" download>
+            <img src="https://assets.interviewbit.com/assets/ibpp/interview_guides/download_v2-f7bcad529b2845c93dddc78cd31acf9ecb098c42854a1757f0f8949950377c02.svg.gz" alt="Download PDF">
+            Download PDF
+        </a>
+    </div>
+    <div class="content-section">
+        <h2>.NET Core Interview Questions and Answers</h2>
+        <ul>
+            <li>
+                <h3>1. What is .NET Core?</h3>
+                <p>.NET Core is a cross-platform, open-source framework for building modern, cloud-based, and internet-connected applications. It is a successor to the .NET Framework and is designed to work on Windows, macOS, and Linux.</p>
+            </li>
+            <li>
+                <h3>2. What are the key differences between .NET Framework and .NET Core?</h3>
+                <p>Key differences include cross-platform support (Linux, macOS, and Windows) in .NET Core, modularity and lightweight nature, and open-source status. .NET Framework is Windows-only and has a more monolithic structure.</p>
+            </li>
+            <li>
+                <h3>3. What is the purpose of the Startup class in .NET Core?</h3>
+                <p>The Startup class is used to configure services and the application pipeline. It contains methods like ConfigureServices and Configure, which define how the application should respond to HTTP requests and configure services used by the application.</p>
+            </li>
+            <li>
+                <h3>4. What is Dependency Injection in .NET Core?</h3>
+                <p>Dependency Injection (DI) is a design pattern used in .NET Core to achieve Inversion of Control (IoC). It allows the injection of dependencies (such as services and repositories) into classes rather than hard-coding them, improving modularity and testability.</p>
+            </li>
+            <li>
+                <h3>5. What is Middleware in .NET Core?</h3>
+                <p>Middleware is a component in .NET Core that is used to handle HTTP requests and responses. Middleware components are assembled into an application pipeline and can perform tasks such as authentication, logging, and exception handling.</p>
+            </li>
+            <li>
+                <h3>6. What is Entity Framework Core?</h3>
+                <p>Entity Framework Core (EF Core) is an Object-Relational Mapper (ORM) for .NET Core that provides a way to interact with databases using .NET objects. It supports LINQ queries, change tracking, and schema migrations.</p>
+            </li>
+            <li>
+                <h3>7. What is a Razor Page?</h3>
+                <p>A Razor Page is a page-centric model in ASP.NET Core that simplifies the development of page-based web applications. It combines the model and view into a single file with a `.cshtml` extension and is part of the Razor Pages framework.</p>
+            </li>
+            <li>
+                <h3>8. How does .NET Core handle configuration?</h3>
+                <p>.NET Core uses a configuration system that supports various sources, such as JSON files, environment variables, and command-line arguments. Configuration settings are typically stored in `appsettings.json` and accessed using the `IConfiguration` interface.</p>
+            </li>
+            <li>
+                <h3>9. What is Kestrel?</h3>
+                <p>Kestrel is a cross-platform web server for ASP.NET Core applications. It is designed to be fast and lightweight and is used as the default web server for .NET Core applications. It can be used in combination with a reverse proxy server like IIS or Nginx.</p>
+            </li>
+            <li>
+                <h3>10. What is the role of `Program.cs` in .NET Core?</h3>
+                <p>The `Program.cs` file contains the entry point for a .NET Core application. It is responsible for setting up the host, which includes configuring the web server and loading configuration settings before the application starts.</p>
+            </li>
+            <li>
+                <h3>11. What is the difference between `.NET Core` and `.NET Standard`?</h3>
+                <p>.NET Core is a runtime and framework for building cross-platform applications, while .NET Standard is a specification that defines a set of APIs that all .NET implementations should support. .NET Standard allows for code sharing across different .NET platforms.</p>
+            </li>
+            <li>
+                <h3>12. What are the common file types used in .NET Core applications?</h3>
+                <p>Common file types include `.csproj` (project file), `.cshtml` (Razor pages), `.json` (configuration files), and `.dll` (compiled assemblies). The `.csproj` file is used to define project properties and dependencies.</p>
+            </li>
+            <li>
+                <h3>13. How does .NET Core support logging?</h3>
+                <p>.NET Core supports logging through a built-in logging framework that can log messages to various outputs such as console, files, and external systems. The `ILogger` interface is used to write log messages, and logging providers are configured in the `Startup` class.</p>
+            </li>
+            <li>
+                <h3>14. What is ASP.NET Core Identity?</h3>
+                <p>ASP.NET Core Identity is a membership system that provides user authentication and authorization functionalities. It includes features for managing user accounts, roles, and claims, and integrates with the ASP.NET Core security framework.</p>
+            </li>
+            <li>
+                <h3>15. What is the purpose of `appsettings.json`?</h3>
+                <p>`appsettings.json` is a configuration file used to store application settings in a structured format. It allows you to define key-value pairs that can be accessed throughout the application using the `IConfiguration` interface.</p>
+            </li>
+            <li>
+                <h3>16. What is a Scoped service in .NET Core?</h3>
+                <p>A Scoped service is a type of service that is created once per request (or per scope) in a web application. It is used to maintain state within a single request and is often used for database contexts and other request-specific services.</p>
+            </li>
+            <li>
+                <h3>17. What is `ConfigureServices` in .NET Core?</h3>
+                <p>The `ConfigureServices` method in the `Startup` class is used to register services and configure dependency injection for the application. It is called at the start of the application and is where you configure services such as MVC, Entity Framework, and custom services.</p>
+            </li>
+            <li>
+                <h3>18. What is the difference between `IApplicationBuilder` and `IServiceCollection`?</h3>
+                <p>`IApplicationBuilder` is used to configure the application's request pipeline, such as adding middleware components. `IServiceCollection` is used to register services for dependency injection and configure the application's services.</p>
+            </li>
+        </ul>
+
+
 </body>
 </html>

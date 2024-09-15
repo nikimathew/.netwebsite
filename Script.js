@@ -1,69 +1,64 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Load page content via AJAX
-    function loadPage(page, container) {
-        fetch(page)
-            .then(response => {
-                if (!response.ok) throw new Error(`Failed to load ${page}: ${response.statusText}`);
-                return response.text();
-            })
-            .then(data => {
-                container.innerHTML = data;
-            })
-            .catch(error => {
-                console.error(error);
-                container.innerHTML = `<p>Error loading content: ${error.message}</p>`;
-            });
-    }
+// Define HTML templates for each component
+const headerHTML = `
+<header>
+    <nav class="top-navbar">
+        <div class="navbar-container">
+            <div class="left">Mayur</div>
+            <div class="right">
+                <a href="#home" class="nav-link" data-page="home">Home</a>
+                <a href="#about" class="nav-link" data-page="about">About Us</a>
+                <a href="#contact" class="nav-link" data-page="contact">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+</header>
+`;
 
-    // Handle side tab buttons (Summary, .NET, Frontend, MSSQL)
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
+const sideMenuHTML = `
+<aside class="side-navbar">
+    <button class="tab-button active" data-tab="summary">Summary</button>
+    <button class="tab-button" data-tab="dotnet">.NET</button>
+    <div class="submenu dotnet-submenu">
+        <button data-page="csharp">C#</button>
+        <button data-page="mvc">MVC</button>
+        <button data-page="dotnetcore">.NET Core</button>
+    </div>
+    <button class="tab-button" data-tab="mssql">MSSQL</button>
+    <button class="tab-button" data-tab="frontend">Frontend</button>
+    <div class="submenu frontend-submenu">
+        <button data-page="html">HTML</button>
+        <button data-page="css">CSS</button>
+        <button data-page="bootstrap">Bootstrap</button>
+        <button data-page="javascript">JavaScript</button>
+        <button data-page="jquery">jQuery</button>
+        <button data-page="react">React</button>
+    </div>
+</aside>
+`;
 
-    tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const tabId = this.getAttribute('data-tab');
+const footerHTML = `
+<footer class="footer">
+    <div class="footer-left">Mayur</div>
+    <div class="footer-center">Copyright © Scorvigo Pvt Ltd</div>
+    <div class="footer-right">
+        <a href="https://www.instagram.com" target="_blank">
+            <img src="—Pngtree—instagram color icon_3995406.png" alt="Instagram" class="social-icon">
+        </a>
+        <a href="https://www.youtube.com" target="_blank">
+            <img src="—Pngtree—youtube social media icon_3572473.png" alt="YouTube" class="social-icon">
+        </a>
+    </div>
+</footer>
+`;
 
-            // Remove active class from all buttons and contents
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
+// Function to load the HTML content into the specified element
+function loadComponent(id, html) {
+    document.getElementById(id).innerHTML = html;
+}
 
-            // Add active class to clicked button and corresponding content
-            this.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-
-    // Handle top navbar links (Home, About Us, Contact Us)
-    const navLinks = document.querySelectorAll('.nav-link');
-    const pageContents = document.querySelectorAll('.page-content');
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            const pageId = this.getAttribute('data-page');
-
-            // Hide all page content sections
-            pageContents.forEach(page => page.classList.remove('active'));
-
-            // Show the clicked page
-            document.getElementById(pageId).classList.add('active');
-
-            // Reset active tab buttons since we moved to a new page
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-
-            // Automatically set the first tab (Summary) as active when home is clicked
-            if (pageId === 'home') {
-                document.querySelector('.tab-button[data-tab="summary"]').classList.add('active');
-                document.getElementById('summary').classList.add('active');
-            }
-        });
-    });
-
-    // Set initial active tab for home page on load
-    const homeSection = document.querySelector('#home');
-    if (homeSection) {
-        // Activate the summary tab by default on load
-        document.querySelector('.tab-button[data-tab="summary"]').classList.add('active');
-        document.getElementById('summary').classList.add('active');
-    }
+// Add event listener to load components when the DOM is ready
+document.addEventListener("DOMContentLoaded", () => {
+    loadComponent('header', headerHTML);
+    loadComponent('side-menu', sideMenuHTML);
+    loadComponent('footer', footerHTML);
 });
