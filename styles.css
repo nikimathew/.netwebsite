@@ -244,3 +244,9 @@ nav.side-navbar {
 button.tab-button {
     background-color: #6667AB;
 }
+.tab-button.active {
+    background-color: #6667AB; /* Default color for active tab */
+  }
+.tab-button:hover {
+  background-color: #555; /* Color when hovered */
+}  
